@@ -10,7 +10,7 @@
 
 #define ControlPORT 1111
 #define CameraPORT 2222
-#define IP "10.42.0.1"
+#define IP "192.168.1.105"
 #define TIMEOUT 1000
 
 #include <QObject>

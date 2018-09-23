@@ -4,7 +4,7 @@ import QtQuick.Controls 2.2
 
 ApplicationWindow {
     visible: true
-    visibility:Window.FullScreen
+    //visibility:Window.FullScreen
     width: 960
     height: 540
     ControlPanel{
@@ -106,6 +106,7 @@ ApplicationWindow {
         }
         onCameraStateChanged:{
             controlPanel.cameraStateChanged(flag)
+            if(!flag)backGround.source="qrc:/Images/bg.png"
         }
         onMessageStateChanged:{
             controlPanel.messageStateChanged(flag)

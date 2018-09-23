@@ -71,6 +71,8 @@ bool NetWork::sendMessage(qint64 sign,qint64 length)
 
     output<<qint64(sign)<<qint64(length);
     _control->write(block,block.size());
+    if(!_control->waitForBytesWritten(TIMEOUT))
+        return  false;
     block.resize(0);
     return true;
 }
@@ -82,25 +84,34 @@ ImageProvider *NetWork::pImgProvider() const
 
 bool NetWork::receiveControlMessage()
 {
+    if(!_control->isValid()){
+        return false;
+    }
     QByteArray block;
     block=_control->read(sizeof(qint64)*2);
     QDataStream output(&block,QIODevice::ReadOnly);
     output.setVersion(QDataStream::Qt_5_2);
 
-    qint64 sign,length;
-    output>>sign>>length;
+    qint64 sign,flag;
+    output>>sign>>flag;
     block.resize(0);
+    switch(sign){
+    case Camera:emit cameraStateChanged(flag);break;
+    case Radar:emit radarStateChanged(flag);break;
+    case Message:emit messageStateChanged(flag);break;
+    default:break;
+    }
     return true;
 }
 
 bool NetWork::receiveCameraMessage()
 {
     if(totalSize==0){
+        startTime=clock();
         while(_camera->bytesAvailable()<static_cast<qint64>(sizeof(quint64)));
         QDataStream in(_camera);
         in.setVersion(QDataStream::Qt_5_11);
         in>>totalSize;
-        startTime=clock();
     }
     if(totalSize>0){
         if(_camera->bytesAvailable()<static_cast<qint64>(totalSize)){
