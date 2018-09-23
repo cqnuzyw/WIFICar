@@ -1,0 +1,30 @@
+{
+	"camera": {
+		"cameraIndex": 0,
+		"imageWidth": 640,
+		"iamgeHeight": 480,
+		"captureInterval": 30,
+		"port": 2222
+	},
+	"control": {
+		"port": 1111
+	},
+	"serial": {
+		"portName": "/dev/ttyUSB0",
+		"baudRate": 115200,
+		"dataBits": 0,
+		"parity": "n",
+		"stopBits": 1,
+		"command": {
+			"forward": "0xAAAF030000025E",
+			"backward": "0xAAAF030000035F",
+			"turnleft": "0xAAAF0300000460",
+			"turnright": "0xAAAF030000015D",
+			"stop": "0xAAAF030000005C",
+			"radaron": "0x00",
+			"radaroff": "0x00",
+			"cameraon": "0x00",
+			"cameraoff": "0x00"
+		}
+	}
+}
