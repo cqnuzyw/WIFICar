@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ControlPanel.qml</file>
+        <file>Images/bg.png</file>
+        <file>Images/camera.png</file>
+        <file>Images/car.png</file>
+        <file>Images/lock.png</file>
+        <file>Images/message.png</file>
+        <file>Images/radar.png</file>
+        <file>Images/setting.png</file>
+        <file>Images/shutdown.png</file>
+        <file>SettingPanel.qml</file>
+        <file>BaseTemplates/RoundButton.qml</file>
+        <file>BaseTemplates/DirectionCompass.qml</file>
+        <file>algorithm.js</file>
+    </qresource>
+</RCC>
