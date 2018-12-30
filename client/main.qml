@@ -8,7 +8,7 @@ ApplicationWindow{
     width: 960
     height: 540
     visible: true
-    //visibility:Window.FullScreen
+    visibility:Window.FullScreen
 
     ControlPanel{
         id:controlPanel
@@ -86,7 +86,7 @@ ApplicationWindow{
         }
         onConnectStateChanged:{
             if(flag){
-                client.connectToHost("192.168.1.106");
+                client.connectToHost("192.168.43.93");
                 client.sendControlMessage(MyMath.Connect,flag)
             }
             else{
